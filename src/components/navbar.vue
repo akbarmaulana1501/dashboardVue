@@ -3,7 +3,7 @@
     <div class="navbar-text ml-auto d-flex">
       <button
         class="btn btn-sm btn-outline-success"
-        v-on:click="$emit('toggle')"
+        v-on:click="$emit('toggle-slide')"
       >
         <font-awesome-icon icon="dollar-sign"></font-awesome-icon>
       </button>
@@ -33,11 +33,16 @@
               <a
                 href="#"
                 class="badge badge-danger text-white"
-                v-on:click.stop="$emit('delete', index)"
+                v-on:click.stop="$emit('delete-item', index)"
                 >-</a
               >
             </div>
           </div>
+          <router-link
+            class="btn btn-small btn-outline-info text-dark float-right mr-4"
+            to="/checkout"
+            >Checkout</router-link
+          >
         </div>
       </div>
     </div>

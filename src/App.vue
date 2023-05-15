@@ -1,23 +1,20 @@
 <template>
   <div id="app" class="container mt-5">
-    <h1>IDshop</h1>
-    <navbar
+    <router-view
       :cart="cart"
       :cartQty="cartQty"
       :cartTotal="cartTotal"
+      :harga.sync="harga"
+      :product="product"
+      :status="status"
       @toggle="toggleSliderStatus"
+      @add="addItem"
       @delete="deleteItem"
-    ></navbar>
-    <price-slider :status="status" :harga.sync="harga"></price-slider>
-    <product-list :product="product" :harga="harga" @add="addItem">
-    </product-list>
+    ></router-view>
   </div>
 </template>
 
 <script>
-import navbar from "./components/navbar.vue";
-import priceSlider from "./components/priceSlider.vue";
-import productList from "./components/productList.vue";
 export default {
   name: "App",
   data: function () {
@@ -27,11 +24,6 @@ export default {
       cart: [],
       status: false,
     };
-  },
-  components: {
-    navbar,
-    priceSlider,
-    productList,
   },
   mounted: function () {
     fetch("https://hplussport.com/api/products/order/price")
